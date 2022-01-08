@@ -39,9 +39,9 @@
         type:'POST',
         data: JSON.stringify({
             query:`{
-                ohmieBalances(where: {ohmie: "`+address+`"}, orderBy: timestamp, orderDirection:asc) {
-                    ohmBalance
-                    sohmBalance
+                humpieBalances(where: {humpie: "`+address+`"}, orderBy: timestamp, orderDirection:asc) {
+                    humpBalance
+                    shumpBalance
                     timestamp
                     dollarBalance
                 }
@@ -49,36 +49,36 @@
         }),
         success: function(result) {
             console.log(result);
-            var timestamps = $.map( result.data.ohmieBalances , function( n ) {
+            var timestamps = $.map( result.data.humpieBalances , function( n ) {
                 var d = new Date(0);
                 d.setUTCSeconds(n.timestamp);
                 var datestring = d.getDate()  + "-" + (d.getMonth()+1) + "-" + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes();
                 return datestring;
             });
-            var ohmBalances = $.map( result.data.ohmieBalances , function( n ) {
-                return n.ohmBalance;
+            var humpBalances = $.map( result.data.humpieBalances , function( n ) {
+                return n.humpBalance;
             });
-            var sohmBalances = $.map( result.data.ohmieBalances , function( n ) {
-                return n.sohmBalance;
+            var shumpBalances = $.map( result.data.humpieBalances , function( n ) {
+                return n.shumpBalance;
             });
-            var dollarBalances = $.map( result.data.ohmieBalances , function( n ) {
+            var dollarBalances = $.map( result.data.humpieBalances , function( n ) {
                 return n.dollarBalance;
             });
 
-            var ohmChart = new Chart(historyChart, {
+            var humpChart = new Chart(historyChart, {
                 type: 'line',
                 data: {
                     labels: timestamps,
                     datasets: [{
-                        label: 'OHM Balance',
+                        label: 'HUMP Balance',
                         borderColor: 'rgb(75, 192, 192)',
-                        data: ohmBalances,
+                        data: humpBalances,
                         tension: 0.1
                     },
                     {
-                        label: 'sOHM Balance',
+                        label: 'sHUMP Balance',
                         borderColor: 'rgb(192, 192, 75)',
-                        data: sohmBalances,
+                        data: shumpBalances,
                         tension: 0.1
                     }]
                 }

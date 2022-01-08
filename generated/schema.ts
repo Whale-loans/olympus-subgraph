@@ -79,7 +79,7 @@ export class DailyBond extends Entity {
   }
 }
 
-export class Ohmie extends Entity {
+export class Humpie extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -87,17 +87,17 @@ export class Ohmie extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save Ohmie entity without an ID");
+    assert(id !== null, "Cannot save Humpie entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save Ohmie entity with non-string ID. " +
+      "Cannot save Humpie entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("Ohmie", id.toString(), this);
+    store.set("Humpie", id.toString(), this);
   }
 
-  static load(id: string): Ohmie | null {
-    return store.get("Ohmie", id) as Ohmie | null;
+  static load(id: string): Humpie | null {
+    return store.get("Humpie", id) as Humpie | null;
   }
 
   get id(): string {
@@ -181,7 +181,7 @@ export class Ohmie extends Entity {
   }
 }
 
-export class OhmieBalance extends Entity {
+export class HumpieBalance extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -189,17 +189,17 @@ export class OhmieBalance extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save OhmieBalance entity without an ID");
+    assert(id !== null, "Cannot save HumpieBalance entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save OhmieBalance entity with non-string ID. " +
+      "Cannot save HumpieBalance entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("OhmieBalance", id.toString(), this);
+    store.set("HumpieBalance", id.toString(), this);
   }
 
-  static load(id: string): OhmieBalance | null {
-    return store.get("OhmieBalance", id) as OhmieBalance | null;
+  static load(id: string): HumpieBalance | null {
+    return store.get("HumpieBalance", id) as HumpieBalance | null;
   }
 
   get id(): string {
@@ -211,31 +211,31 @@ export class OhmieBalance extends Entity {
     this.set("id", Value.fromString(value));
   }
 
-  get ohmie(): string {
-    let value = this.get("ohmie");
+  get humpie(): string {
+    let value = this.get("humpie");
     return value.toString();
   }
 
-  set ohmie(value: string) {
-    this.set("ohmie", Value.fromString(value));
+  set humpie(value: string) {
+    this.set("humpie", Value.fromString(value));
   }
 
-  get sohmBalance(): BigDecimal {
-    let value = this.get("sohmBalance");
+  get shumpBalance(): BigDecimal {
+    let value = this.get("shumpBalance");
     return value.toBigDecimal();
   }
 
-  set sohmBalance(value: BigDecimal) {
-    this.set("sohmBalance", Value.fromBigDecimal(value));
+  set shumpBalance(value: BigDecimal) {
+    this.set("shumpBalance", Value.fromBigDecimal(value));
   }
 
-  get ohmBalance(): BigDecimal {
-    let value = this.get("ohmBalance");
+  get humpBalance(): BigDecimal {
+    let value = this.get("humpBalance");
     return value.toBigDecimal();
   }
 
-  set ohmBalance(value: BigDecimal) {
-    this.set("ohmBalance", Value.fromBigDecimal(value));
+  set humpBalance(value: BigDecimal) {
+    this.set("humpBalance", Value.fromBigDecimal(value));
   }
 
   get bondBalance(): BigDecimal {
@@ -339,13 +339,13 @@ export class Deposit extends Entity {
     this.set("transaction", Value.fromString(value));
   }
 
-  get ohmie(): string {
-    let value = this.get("ohmie");
+  get humpie(): string {
+    let value = this.get("humpie");
     return value.toString();
   }
 
-  set ohmie(value: string) {
-    this.set("ohmie", Value.fromString(value));
+  set humpie(value: string) {
+    this.set("humpie", Value.fromString(value));
   }
 
   get amount(): BigDecimal {
@@ -441,8 +441,8 @@ export class Redemption extends Entity {
     }
   }
 
-  get ohmie(): string | null {
-    let value = this.get("ohmie");
+  get humpie(): string | null {
+    let value = this.get("humpie");
     if (value === null || value.kind == ValueKind.NULL) {
       return null;
     } else {
@@ -450,11 +450,11 @@ export class Redemption extends Entity {
     }
   }
 
-  set ohmie(value: string | null) {
+  set humpie(value: string | null) {
     if (value === null) {
-      this.unset("ohmie");
+      this.unset("humpie");
     } else {
-      this.set("ohmie", Value.fromString(value as string));
+      this.set("humpie", Value.fromString(value as string));
     }
   }
 
@@ -532,13 +532,13 @@ export class Stake extends Entity {
     this.set("transaction", Value.fromString(value));
   }
 
-  get ohmie(): string {
-    let value = this.get("ohmie");
+  get humpie(): string {
+    let value = this.get("humpie");
     return value.toString();
   }
 
-  set ohmie(value: string) {
-    this.set("ohmie", Value.fromString(value));
+  set humpie(value: string) {
+    this.set("humpie", Value.fromString(value));
   }
 
   get amount(): BigDecimal {
@@ -599,13 +599,13 @@ export class Unstake extends Entity {
     this.set("transaction", Value.fromString(value));
   }
 
-  get ohmie(): string {
-    let value = this.get("ohmie");
+  get humpie(): string {
+    let value = this.get("humpie");
     return value.toString();
   }
 
-  set ohmie(value: string) {
-    this.set("ohmie", Value.fromString(value));
+  set humpie(value: string) {
+    this.set("humpie", Value.fromString(value));
   }
 
   get amount(): BigDecimal {
@@ -675,13 +675,13 @@ export class Rebase extends Entity {
     this.set("amount", Value.fromBigDecimal(value));
   }
 
-  get stakedOhms(): BigDecimal {
-    let value = this.get("stakedOhms");
+  get stakedHumps(): BigDecimal {
+    let value = this.get("stakedHumps");
     return value.toBigDecimal();
   }
 
-  set stakedOhms(value: BigDecimal) {
-    this.set("stakedOhms", Value.fromBigDecimal(value));
+  set stakedHumps(value: BigDecimal) {
+    this.set("stakedHumps", Value.fromBigDecimal(value));
   }
 
   get percentage(): BigDecimal {
@@ -960,22 +960,22 @@ export class ProtocolMetric extends Entity {
     this.set("timestamp", Value.fromBigInt(value));
   }
 
-  get ohmCirculatingSupply(): BigDecimal {
-    let value = this.get("ohmCirculatingSupply");
+  get humpCirculatingSupply(): BigDecimal {
+    let value = this.get("humpCirculatingSupply");
     return value.toBigDecimal();
   }
 
-  set ohmCirculatingSupply(value: BigDecimal) {
-    this.set("ohmCirculatingSupply", Value.fromBigDecimal(value));
+  set humpCirculatingSupply(value: BigDecimal) {
+    this.set("humpCirculatingSupply", Value.fromBigDecimal(value));
   }
 
-  get sOhmCirculatingSupply(): BigDecimal {
-    let value = this.get("sOhmCirculatingSupply");
+  get sHumpCirculatingSupply(): BigDecimal {
+    let value = this.get("sHumpCirculatingSupply");
     return value.toBigDecimal();
   }
 
-  set sOhmCirculatingSupply(value: BigDecimal) {
-    this.set("sOhmCirculatingSupply", Value.fromBigDecimal(value));
+  set sHumpCirculatingSupply(value: BigDecimal) {
+    this.set("sHumpCirculatingSupply", Value.fromBigDecimal(value));
   }
 
   get totalSupply(): BigDecimal {
@@ -987,13 +987,13 @@ export class ProtocolMetric extends Entity {
     this.set("totalSupply", Value.fromBigDecimal(value));
   }
 
-  get ohmPrice(): BigDecimal {
-    let value = this.get("ohmPrice");
+  get humpPrice(): BigDecimal {
+    let value = this.get("humpPrice");
     return value.toBigDecimal();
   }
 
-  set ohmPrice(value: BigDecimal) {
-    this.set("ohmPrice", Value.fromBigDecimal(value));
+  set humpPrice(value: BigDecimal) {
+    this.set("humpPrice", Value.fromBigDecimal(value));
   }
 
   get marketCap(): BigDecimal {
@@ -1041,103 +1041,67 @@ export class ProtocolMetric extends Entity {
     this.set("nextEpochRebase", Value.fromBigDecimal(value));
   }
 
-  get nextDistributedOhm(): BigDecimal {
-    let value = this.get("nextDistributedOhm");
+  get nextDistributedHump(): BigDecimal {
+    let value = this.get("nextDistributedHump");
     return value.toBigDecimal();
   }
 
-  set nextDistributedOhm(value: BigDecimal) {
-    this.set("nextDistributedOhm", Value.fromBigDecimal(value));
+  set nextDistributedHump(value: BigDecimal) {
+    this.set("nextDistributedHump", Value.fromBigDecimal(value));
   }
 
-  get treasuryDaiRiskFreeValue(): BigDecimal {
-    let value = this.get("treasuryDaiRiskFreeValue");
+  get treasuryBusdRiskFreeValue(): BigDecimal {
+    let value = this.get("treasuryBusdRiskFreeValue");
     return value.toBigDecimal();
   }
 
-  set treasuryDaiRiskFreeValue(value: BigDecimal) {
-    this.set("treasuryDaiRiskFreeValue", Value.fromBigDecimal(value));
+  set treasuryBusdRiskFreeValue(value: BigDecimal) {
+    this.set("treasuryBusdRiskFreeValue", Value.fromBigDecimal(value));
   }
 
-  get treasuryFraxRiskFreeValue(): BigDecimal {
-    let value = this.get("treasuryFraxRiskFreeValue");
+  get treasuryUsdcRiskFreeValue(): BigDecimal {
+    let value = this.get("treasuryUsdcRiskFreeValue");
     return value.toBigDecimal();
   }
 
-  set treasuryFraxRiskFreeValue(value: BigDecimal) {
-    this.set("treasuryFraxRiskFreeValue", Value.fromBigDecimal(value));
+  set treasuryUsdcRiskFreeValue(value: BigDecimal) {
+    this.set("treasuryUsdcRiskFreeValue", Value.fromBigDecimal(value));
   }
 
-  get treasuryLusdRiskFreeValue(): BigDecimal {
-    let value = this.get("treasuryLusdRiskFreeValue");
+  get treasuryWBNBRiskFreeValue(): BigDecimal {
+    let value = this.get("treasuryWBNBRiskFreeValue");
     return value.toBigDecimal();
   }
 
-  set treasuryLusdRiskFreeValue(value: BigDecimal) {
-    this.set("treasuryLusdRiskFreeValue", Value.fromBigDecimal(value));
+  set treasuryWBNBRiskFreeValue(value: BigDecimal) {
+    this.set("treasuryWBNBRiskFreeValue", Value.fromBigDecimal(value));
   }
 
-  get treasuryWETHRiskFreeValue(): BigDecimal {
-    let value = this.get("treasuryWETHRiskFreeValue");
+  get treasuryBusdMarketValue(): BigDecimal {
+    let value = this.get("treasuryBusdMarketValue");
     return value.toBigDecimal();
   }
 
-  set treasuryWETHRiskFreeValue(value: BigDecimal) {
-    this.set("treasuryWETHRiskFreeValue", Value.fromBigDecimal(value));
+  set treasuryBusdMarketValue(value: BigDecimal) {
+    this.set("treasuryBusdMarketValue", Value.fromBigDecimal(value));
   }
 
-  get treasuryDaiMarketValue(): BigDecimal {
-    let value = this.get("treasuryDaiMarketValue");
+  get treasuryUsdcMarketValue(): BigDecimal {
+    let value = this.get("treasuryUsdcMarketValue");
     return value.toBigDecimal();
   }
 
-  set treasuryDaiMarketValue(value: BigDecimal) {
-    this.set("treasuryDaiMarketValue", Value.fromBigDecimal(value));
+  set treasuryUsdcMarketValue(value: BigDecimal) {
+    this.set("treasuryUsdcMarketValue", Value.fromBigDecimal(value));
   }
 
-  get treasuryFraxMarketValue(): BigDecimal {
-    let value = this.get("treasuryFraxMarketValue");
+  get treasuryWBNBMarketValue(): BigDecimal {
+    let value = this.get("treasuryWBNBMarketValue");
     return value.toBigDecimal();
   }
 
-  set treasuryFraxMarketValue(value: BigDecimal) {
-    this.set("treasuryFraxMarketValue", Value.fromBigDecimal(value));
-  }
-
-  get treasuryLusdMarketValue(): BigDecimal {
-    let value = this.get("treasuryLusdMarketValue");
-    return value.toBigDecimal();
-  }
-
-  set treasuryLusdMarketValue(value: BigDecimal) {
-    this.set("treasuryLusdMarketValue", Value.fromBigDecimal(value));
-  }
-
-  get treasuryXsushiMarketValue(): BigDecimal {
-    let value = this.get("treasuryXsushiMarketValue");
-    return value.toBigDecimal();
-  }
-
-  set treasuryXsushiMarketValue(value: BigDecimal) {
-    this.set("treasuryXsushiMarketValue", Value.fromBigDecimal(value));
-  }
-
-  get treasuryWETHMarketValue(): BigDecimal {
-    let value = this.get("treasuryWETHMarketValue");
-    return value.toBigDecimal();
-  }
-
-  set treasuryWETHMarketValue(value: BigDecimal) {
-    this.set("treasuryWETHMarketValue", Value.fromBigDecimal(value));
-  }
-
-  get treasuryCVXMarketValue(): BigDecimal {
-    let value = this.get("treasuryCVXMarketValue");
-    return value.toBigDecimal();
-  }
-
-  set treasuryCVXMarketValue(value: BigDecimal) {
-    this.set("treasuryCVXMarketValue", Value.fromBigDecimal(value));
+  set treasuryWBNBMarketValue(value: BigDecimal) {
+    this.set("treasuryWBNBMarketValue", Value.fromBigDecimal(value));
   }
 
   get currentAPY(): BigDecimal {
@@ -1302,40 +1266,40 @@ export class ProtocolMetric extends Entity {
     }
   }
 
-  get treasuryOhmDaiPOL(): BigDecimal {
-    let value = this.get("treasuryOhmDaiPOL");
+  get treasuryHumpDaiPOL(): BigDecimal {
+    let value = this.get("treasuryHumpDaiPOL");
     return value.toBigDecimal();
   }
 
-  set treasuryOhmDaiPOL(value: BigDecimal) {
-    this.set("treasuryOhmDaiPOL", Value.fromBigDecimal(value));
+  set treasuryHumpDaiPOL(value: BigDecimal) {
+    this.set("treasuryHumpDaiPOL", Value.fromBigDecimal(value));
   }
 
-  get treasuryOhmFraxPOL(): BigDecimal {
-    let value = this.get("treasuryOhmFraxPOL");
+  get treasuryHumpFraxPOL(): BigDecimal {
+    let value = this.get("treasuryHumpFraxPOL");
     return value.toBigDecimal();
   }
 
-  set treasuryOhmFraxPOL(value: BigDecimal) {
-    this.set("treasuryOhmFraxPOL", Value.fromBigDecimal(value));
+  set treasuryHumpFraxPOL(value: BigDecimal) {
+    this.set("treasuryHumpFraxPOL", Value.fromBigDecimal(value));
   }
 
-  get treasuryOhmLusdPOL(): BigDecimal {
-    let value = this.get("treasuryOhmLusdPOL");
+  get treasuryHumpLusdPOL(): BigDecimal {
+    let value = this.get("treasuryHumpLusdPOL");
     return value.toBigDecimal();
   }
 
-  set treasuryOhmLusdPOL(value: BigDecimal) {
-    this.set("treasuryOhmLusdPOL", Value.fromBigDecimal(value));
+  set treasuryHumpLusdPOL(value: BigDecimal) {
+    this.set("treasuryHumpLusdPOL", Value.fromBigDecimal(value));
   }
 
-  get treasuryOhmEthPOL(): BigDecimal {
-    let value = this.get("treasuryOhmEthPOL");
+  get treasuryHumpEthPOL(): BigDecimal {
+    let value = this.get("treasuryHumpEthPOL");
     return value.toBigDecimal();
   }
 
-  set treasuryOhmEthPOL(value: BigDecimal) {
-    this.set("treasuryOhmEthPOL", Value.fromBigDecimal(value));
+  set treasuryHumpEthPOL(value: BigDecimal) {
+    this.set("treasuryHumpEthPOL", Value.fromBigDecimal(value));
   }
 
   get holders(): BigInt {
@@ -1509,66 +1473,39 @@ export class BondDiscount extends Entity {
     this.set("timestamp", Value.fromBigInt(value));
   }
 
-  get dai_discount(): BigDecimal {
-    let value = this.get("dai_discount");
+  get busd_discount(): BigDecimal {
+    let value = this.get("busd_discount");
     return value.toBigDecimal();
   }
 
-  set dai_discount(value: BigDecimal) {
-    this.set("dai_discount", Value.fromBigDecimal(value));
+  set busd_discount(value: BigDecimal) {
+    this.set("busd_discount", Value.fromBigDecimal(value));
   }
 
-  get ohmdai_discount(): BigDecimal {
-    let value = this.get("ohmdai_discount");
+  get humpbusd_discount(): BigDecimal {
+    let value = this.get("humpbusd_discount");
     return value.toBigDecimal();
   }
 
-  set ohmdai_discount(value: BigDecimal) {
-    this.set("ohmdai_discount", Value.fromBigDecimal(value));
+  set humpbusd_discount(value: BigDecimal) {
+    this.set("humpbusd_discount", Value.fromBigDecimal(value));
   }
 
-  get frax_discount(): BigDecimal {
-    let value = this.get("frax_discount");
+  get usdc_discount(): BigDecimal {
+    let value = this.get("usdc_discount");
     return value.toBigDecimal();
   }
 
-  set frax_discount(value: BigDecimal) {
-    this.set("frax_discount", Value.fromBigDecimal(value));
+  set usdc_discount(value: BigDecimal) {
+    this.set("usdc_discount", Value.fromBigDecimal(value));
   }
 
-  get ohmfrax_discount(): BigDecimal {
-    let value = this.get("ohmfrax_discount");
-    return value.toBigDecimal();
-  }
-
-  set ohmfrax_discount(value: BigDecimal) {
-    this.set("ohmfrax_discount", Value.fromBigDecimal(value));
-  }
-
-  get eth_discount(): BigDecimal {
+  get bnb_discount(): BigDecimal {
     let value = this.get("eth_discount");
     return value.toBigDecimal();
   }
 
-  set eth_discount(value: BigDecimal) {
+  set bnb_discount(value: BigDecimal) {
     this.set("eth_discount", Value.fromBigDecimal(value));
-  }
-
-  get lusd_discount(): BigDecimal {
-    let value = this.get("lusd_discount");
-    return value.toBigDecimal();
-  }
-
-  set lusd_discount(value: BigDecimal) {
-    this.set("lusd_discount", Value.fromBigDecimal(value));
-  }
-
-  get ohmlusd_discount(): BigDecimal {
-    let value = this.get("ohmlusd_discount");
-    return value.toBigDecimal();
-  }
-
-  set ohmlusd_discount(value: BigDecimal) {
-    this.set("ohmlusd_discount", Value.fromBigDecimal(value));
   }
 }
